@@ -1,5 +1,6 @@
 package com.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="user")
 @Component
-public class RegistrationBean {
+public class RegistrationBean implements Serializable{
 
 
 	@NotBlank(message= "{error.firstName}")
