@@ -1,12 +1,16 @@
 package com.model;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class NewPasswordSet {
 
-	
+	@NotBlank(message= "{error.NewPasswordSet.newPassword}")
 	private String newPassword;
+	
+	@NotBlank(message= "{error.NewPasswordSet.confirmPassword}")
 	private String confirmPassword;
 	
 	public String getNewPassword() {

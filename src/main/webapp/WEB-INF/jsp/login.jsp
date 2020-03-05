@@ -7,11 +7,29 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style>
-
+.row{
+	padding-top:20px;
+	padding-left:20px;
+}
+#errors{
+	color:red;
+}
+#header-container{
+	width:80%;
+	margin:auto;
+}
 </style>
-<body background="C:\Users\839879\Pictures\Project\back" style="background-color:lavender" >
-<center><h1>User Login Page</h1></center>
+</head>
+<body  style="background-color:lavender;background-image: url('images//friends2.jpg')" >
+<center><h1>Login Page</h1></center>
+<c:if test="${flag==1 }">
+
+<center><h2>Invalid Username or Password</h2></center>
+
+</c:if>
 
 <form:form action="successlogin" method="post" modelAttribute="login">
 
@@ -19,25 +37,33 @@
 
 <tr>
 <td>Username</td>
-<td><form:input path="userName" id="userName" /></td>
-<td><form:errors path="userName"/></td>
+</tr>
+<tr>
+<td><img src="Person.svg" alt="" width="32" height="32" title="person">
+        <form:input class="form-control" path="userName" id="userName"/></td>
+<td><form:errors id="errors" path="userName"/></td>
+ 
 </tr>
 
 <tr>
 <td>Password</td>
-<td><form:input type="password" path="userPassword" id="userPassword" /></td>
-<td><form:errors path="userPassword"/></td>
+</tr>
+<tr>
+<td><form:input class="form-control" type="password" path="userPassword" id="userPassword" /></td>
+<td><form:errors id="errors" path="userPassword"/></td>
 </tr>
 
-
-
+<tr class="row">
+<td><input class="btn btn-primary" type="submit" value="Login"></td>
+<td><input class="btn btn-primary" type="reset" value="Clear"></td>
+</tr>
 <tr>
-<td><input type="submit" value="Login"></td>
 <td><a href="\forgotpassword">Forgot Password</a></td>
 </tr>
 <tr>
-<td><p>Do you have an account?</p><a href="\register">SignUp</a></td>
-
+<td>Do you have an account?
+</td>
+<td><a href="\register" class="btn btn-primary">SignUp</a></td>
 </tr>
 
 </table>

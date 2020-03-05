@@ -6,6 +6,7 @@ import com.repository.UserDao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +14,18 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
 
+	
 	@Autowired
 	UserDao dao;
 
@@ -47,21 +51,7 @@ public class RegistrationController {
 
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage(@ModelAttribute("login") Login login) {
-		return "login";
-	}
-
-	@RequestMapping(value = "/successlogin", method = RequestMethod.POST)
-
-	public String successloginPage(@Valid @ModelAttribute("login") Login login, BindingResult result) {
-
-		if (result.hasErrors()) {
-
-			return "login";
-		}
-		return "successlogin";
-	}
+	
 
 	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
 
@@ -77,19 +67,23 @@ public class RegistrationController {
 		return "forgotpassword";
 	}
 
-	@RequestMapping(value = "/successForgotPasswordPage", method = RequestMethod.GET)
-
-	public String successForgotPasswordPage(@ModelAttribute("forgotpassword") ForgotPassword forgotPassword,
-			BindingResult result) {
-
-		if (result.hasErrors()) {
-
-			return "forgotpassword";
-		}
+	
+	@PostMapping("/successForgotPasswordPage")
+	public ModelAndView newPasswordSet(@Valid @ModelAttribute("forgotpassword")ForgotPassword forgotPassword,BindingResult br,HttpSession session) {
 		
-		return "redirect:/newpasswordset";
+		ModelAndView mv=new ModelAndView("forgotpassword", "flag", 1);
 
-	}
+		if(br.hasErrors()) {
+			
+			mv=new ModelAndView("forgotpassword");
+		}
+			if(forgotPassword.getSecurityQuestion1()=="" &&forgotPassword.getSecurityQuestion2()=="" && forgotPassword.getSecurityQuestion3()=="") {
+			
+			mv=new ModelAndView("redirect:/newpasswordset");
+			}
+			
+		return mv;}
+
 
 	@RequestMapping(value = "/newpasswordset", method = RequestMethod.GET)
 
@@ -99,10 +93,9 @@ public class RegistrationController {
 		return "newpasswordset";
 	}
 
-	@RequestMapping(value = "/successNewPassword", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/successNewPassword", method = RequestMethod.GET)
 
-	public String successNewPasswordSet(@ModelAttribute("newpasswordset") NewPasswordSet newPasswordSet, BindingResult result
-	) {
+	public String successNewPasswordSet(@ModelAttribute("newpasswordset") NewPasswordSet newPasswordSet, BindingResult result) {
 
 		
 		  if (result.hasErrors()) {
@@ -111,7 +104,22 @@ public class RegistrationController {
 		 
 		return "redirect:/login";
 
-	}
+	}*/
+	@PostMapping("/successNewPassword")
+	public ModelAndView newPasswordSet(@Valid @ModelAttribute("newpasswordset")NewPasswordSet newpassword,BindingResult br,HttpSession session) {
+		
+		ModelAndView mv=new ModelAndView("newpasswordset", "flag", 1);
+
+		if(br.hasErrors()) {
+			
+			mv=new ModelAndView("newpasswordset");
+		}
+			if(newpassword.getNewPassword().equals(newpassword.getConfirmPassword())) {
+			
+			mv=new ModelAndView("redirect:/login");
+			}
+			
+		return mv;}
 
 	@InitBinder
 	public void datebind(WebDataBinder web) {

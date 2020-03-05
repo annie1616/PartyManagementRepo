@@ -12,7 +12,7 @@ public class Login {
 	private String userName;
 	
 	@NotBlank(message= "{error.login.userPassword}")
-	@Size(min=8,max=12,message="{error.login.userPassword.format}")
+	
 	private String userPassword;
 	
 	public String getUserPassword() {

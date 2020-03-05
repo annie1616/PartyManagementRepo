@@ -16,6 +16,10 @@ public class PartyPlanningApplication {
 		LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
 
 		bean.setValidationMessageSource(msg);
+		
+		
+		
+		
 
 		return bean;
 
