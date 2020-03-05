@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Implementation-Title: HolidayParty_new
 Implementation-Version: 0.0.1-SNAPSHOT
 Build-Jdk-Spec: 1.8
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Implementation-Title: HolidayParty_new
+Implementation-Version: 0.0.1-SNAPSHOT
+Build-Jdk-Spec: 1.8
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> branch 'rajkumar' of https://github.com/annie1616/PartyManagementRepo.git
