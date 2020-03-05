@@ -25,7 +25,7 @@ public class RegistrationBean implements Serializable{
 	@NotBlank(message= "{error.lastName}")
 	private String lastName;
 	
-	
+	//spring.jpa.database-platform = org.hibernate.dialect.MySQL5Dialect
 	private Date dob;
 	
 	@NotBlank(message= "{error.gender}")
@@ -85,6 +85,12 @@ public class RegistrationBean implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public RegistrationBean() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	
 	
 }

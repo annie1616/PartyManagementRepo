@@ -58,7 +58,7 @@
 
 <tr>
 <td>Password</td>
-<td><form:input path="password" id="password"/></td>
+<td><form:input type="password" path="password" id="password"/></td>
 <td><form:errors path="password"/></td>
 </tr>
 

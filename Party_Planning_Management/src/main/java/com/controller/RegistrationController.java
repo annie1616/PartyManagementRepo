@@ -28,7 +28,7 @@ public class RegistrationController {
 
                 @RequestMapping(value = "/register", method = RequestMethod.POST)
 
-                public String performRegistration(@Valid@ModelAttribute("register") RegistrationBean registrationBean,BindingResult result) {
+                public String performRegistration(@Valid @ModelAttribute("register") RegistrationBean registrationBean,BindingResult result) {
                 	dao.save(registrationBean);
                 if (result.hasErrors()) {
 
@@ -76,12 +76,7 @@ public class RegistrationController {
 
                 }
                 
-                @PostMapping("/database")
-                public String registerdetails(@ModelAttribute("register")RegistrationBean registrationBean)
-                {
-                	dao.save(registrationBean);
-					return "final";
-                }
+              
                 
                 @InitBinder
                 public void datebind(WebDataBinder web)
