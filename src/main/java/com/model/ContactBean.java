@@ -3,6 +3,7 @@ package com.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
 
@@ -10,11 +11,15 @@ import org.springframework.stereotype.Component;
 @Table(name="contact")
 @Component
 public class ContactBean 
-			{				
+			{	
+				@NotBlank(message= "{error.contact.name}")
 				private String name;
 				@Id
+				@NotBlank(message= "{error.contact.email}")
 				private String email;
+				@NotBlank(message= "{error.contact.phone}")
 				private String phone;
+				@NotBlank(message= "{error.contact.review}")
 				private String review;
 				public String getName() {
 					return name;

@@ -1,11 +1,27 @@
 package com.model;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
 
+@Entity
+@Table(name="Questions")
 @Component
 public class ForgotPassword {
+	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@NotBlank(message= "{error.forgot.id}")
+	private String userId;
 	
 	@NotBlank(message= "{error.forgot.q1}")
 	private String securityQuestion1;
@@ -16,6 +32,12 @@ public class ForgotPassword {
 	@NotBlank(message= "{error.forgot.q3}")
 	private String securityQuestion3;
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	
 	public String getSecurityQuestion1() {
 		return securityQuestion1;

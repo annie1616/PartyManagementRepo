@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-package com;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-
-
-@SpringBootApplication
-@ComponentScan(basePackages="com")
-public class PartyPlanningApplication {
-
-                public static void main(String[] args) {
-                                SpringApplication.run(PartyPlanningApplication.class, args);
-                }
-
-}
-
-
-=======
 package com;
 
 import org.springframework.boot.SpringApplication;
@@ -49,4 +30,3 @@ public class PartyPlanningApplication {
 	}
 
 }
->>>>>>> branch 'rajkumar' of https://github.com/annie1616/PartyManagementRepo.git

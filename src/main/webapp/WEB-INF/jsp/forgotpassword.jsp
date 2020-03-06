@@ -16,24 +16,36 @@
 #errors {
 	color: red;
 }
-#header-container{
-	width:80%;
-	margin:auto;
+
+#header-container {
+	width: 80%;
+	margin: auto;
 }
 </style>
 </head>
 <body style="background-image: url('images//friends2.jpg')">
 	<center>
-		<h1>User Password Configuration</h1>
+		<h1>Password Configuration</h1>
 	</center>
 
+	<c:if test="${flag==1}">
 
+		<center>
+			<h3>Answers must be same as when you gave in for sign up</h3>
+		</center>
+
+	</c:if>
 	<form:form action="successForgotPasswordPage" method="post"
 		modelAttribute="forgotpassword">
 
 
 		<table align="center">
-
+			<tr>
+				<td><p>Your User_ID</p> <form:input
+						class="form-control" path="userId"
+						id="usrId" /></td>
+				<td><form:errors id="errors" path="userId" /></td>
+			</tr>
 			<tr>
 				<td><p>What is your pet name?</p> <form:input
 						class="form-control" path="securityQuestion1"

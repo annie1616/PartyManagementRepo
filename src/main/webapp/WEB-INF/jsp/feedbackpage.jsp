@@ -62,12 +62,6 @@
 <td></td>
 </tr>
 
-
-<%-- <tr>
-<td>Any Remarks?</td>
-<td><form:textarea ></form:textarea></td>
-<td></td>
-</tr> --%>
 </table>
 </form:form>
 </body>

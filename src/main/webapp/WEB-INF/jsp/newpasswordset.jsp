@@ -33,8 +33,7 @@
 		<h1>Set your New Password</h1>
 	</center>
 
-	<form:form action="successNewPassword" method="post"
-		modelAttribute="newpasswordset">
+	<form:form action="successNewPassword" method="post" modelAttribute="newpasswordset">
 		<c:if test="${flag==1 }">
 
 			<center>
