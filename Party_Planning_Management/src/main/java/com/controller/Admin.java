@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.model.InvitationBean;
 import com.model.VenueBean;
 import com.repository.AdminDao;
+import com.repository.InvitationDao;
 
 @Controller
 public class Admin {
@@ -21,6 +23,8 @@ public class Admin {
 	@Autowired
 	private AdminDao dao;
 	
+	@Autowired
+	private InvitationDao idao;
 	
 	
 	@GetMapping("/adminhome")
@@ -129,4 +133,28 @@ public class Admin {
 		
 	}
 	
+	@GetMapping("/addInivitationForm")
+	public String deleteVenue(@ModelAttribute("invitation")  InvitationBean invitation) {
+		
+	return "addInvitationForm";
+	}
+	
+	@PostMapping("/addInvitationSubmit")
+	public String addInivitationSubmit(@ModelAttribute("invitation")  InvitationBean invitation,BindingResult br)
+	{
+		
+		idao.save(invitation);
+		
+Optional<InvitationBean> opt= idao.findById((invitation.getInvitationId()));
+		
+		if(opt!=null) {
+		
+		return "InvitationEntered";
+	}
+	else {
+		
+		return "invitationNotEntered";
+	
+	}
+	}
 }

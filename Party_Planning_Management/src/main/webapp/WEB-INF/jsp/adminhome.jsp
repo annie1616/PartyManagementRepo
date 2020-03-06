@@ -5,13 +5,19 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+
+
+</style>
 </head>
-<body>
-<h2>Welcome Admin</h2>
+<body style="background-image: url('download.jpeg');">
+<center>
+<h2 >Welcome Admin</h2>
 
-<a href="/veiwVenue">Veiw Details</a><br><br>
-<a href ="/addVenueDetailsForm">Add venue details</a><br><br>
+<a href="/veiwVenue" >Veiw Details</a><br><br>
+<a href ="/addVenueDetailsForm" >Add venue details</a><br><br>
+<a href="/addInivitationForm" >Add Invitation and Images</a>
 
-
+</center>
 </body>
 </html>
